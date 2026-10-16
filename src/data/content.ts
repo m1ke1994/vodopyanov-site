@@ -1,0 +1,9 @@
+export type Poem={id:string;title:string;theme:string;publishedAt?:string;demo?:boolean;lines:string[]};
+export type Song={id:string;title:string;theme:string;publishedAt?:string;demo?:boolean;notes:number[];audioSrc?:string};
+// Даты демонстрационные. Для настоящих работ указывайте дату публикации YYYY-MM-DD.
+export const author={name:'Александр Водопьянов',role:'Автор песен и стихов',bio:'У каждого чувства есть свой голос. У каждой тишины — свои слова.',email:'',telegram:''};
+export const poems:Poem[]=[{id:'lit-window',publishedAt:'2026-10-15',demo:true,title:'Пока горит окно',theme:'О близости',lines:['Пока горит окно на той стороне,','У ночи есть причина быть светлее.','И город, засыпая в тишине,','Кого-то ждёт. И оттого теплее.']},{id:'distance',publishedAt:'2026-10-10',demo:true,title:'На расстоянии',theme:'О любви',lines:['Меж нами — города и поезда,','Но расстояние не измеряют вёрстами.','Ты просто оставайся. Иногда','Достаточно, что мы под теми ж звёздами.']},{id:'quiet-shore',publishedAt:'2026-10-01',demo:true,title:'Тихий берег',theme:'О себе',lines:['Я возвращаюсь к берегу реки,','Где время не торопится случиться.','И все мои несказанные строки','Ложатся на ладони, словно птицы.']}];
+export const songs:Song[]=[{id:'after-midnight',publishedAt:'2026-10-14',demo:true,title:'После полуночи',theme:'Ночной город',notes:[220,261.63,329.63,293.66]},{id:'where-you-are',publishedAt:'2026-10-07',demo:true,title:'Там, где ты',theme:'Близость',notes:[196,246.94,293.66,369.99]},{id:'warm-wind',publishedAt:'2026-09-28',demo:true,title:'Тёплый ветер',theme:'Дорога',notes:[174.61,220,261.63,349.23]}];
+
+// Add the author's real URLs here; empty values render honest, non-clickable placeholders.
+export const contacts=[{label:'Telegram',caption:'Написать сообщение',href:''},{label:'ВКонтакте',caption:'Страница автора',href:''},{label:'Email',caption:'Для сотрудничества',href:''}];

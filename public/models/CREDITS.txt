@@ -1,0 +1,6 @@
+STUDIO CAPSULE — CONDENSER MICROPHONE
+Creator: Innerscene
+Source: https://www.innerscene.com/tools/library/3d-parts/studio-capsule-condenser-microphone-1f87c578
+License: CC0 1.0 https://creativecommons.org/publicdomain/zero/1.0/
+Changes: desktop base and short stem removed at runtime; microphone fitted to stage stand; size and orientation adjusted.
+
