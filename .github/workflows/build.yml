@@ -14,5 +14,6 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run test:tracknode
+      - run: npm run test:cms
       - run: npm run build
       - run: docker build -t vodopyanov-site:ci .

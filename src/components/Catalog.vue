@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import {computed,ref,watch,nextTick,onUnmounted} from 'vue';
-import {poems,songs,type Poem,type Song} from '../data/content';
+import {author,poems,songs,type Poem,type Song} from '../data/content';
 import {sortCatalog,formatDate} from '../utils/catalog.mjs';
 const props=defineProps<{kind:'poems'|'songs'}>();
 const isPoems=props.kind==='poems';
@@ -19,7 +19,7 @@ onUnmounted(()=>{stopDemo();ctx?.close();document.body.style.overflow=''});
 </script>
 <template>
 <div class="catalog-page">
-<header class="catalog-header"><a class="wordmark" href="/">АВ<span>Александр Водопьянов</span></a><nav aria-label="Навигация каталога"><a href="/">Главная</a><a href="/poems.html" :aria-current="isPoems?'page':undefined">Стихи</a><a href="/songs.html" :aria-current="!isPoems?'page':undefined">Песни</a></nav></header>
+<header class="catalog-header"><a class="wordmark" href="/">АВ<span>{{author.name}}</span></a><nav aria-label="Навигация каталога"><a href="/">Главная</a><a href="/poems.html" :aria-current="isPoems?'page':undefined">Стихи</a><a href="/songs.html" :aria-current="!isPoems?'page':undefined">Песни</a></nav></header>
 <main class="catalog-main"><a href="/" class="catalog-back">← Вернуться к истории</a><div class="scene-caption">МЕЖДУ СТРОК / {{isPoems?'ПОЭЗИЯ':'МУЗЫКА'}}</div><h1>Все <em>{{isPoems?'стихи.':'песни.'}}</em></h1><p class="catalog-intro">{{isPoems?'Строки о близости, расстояниях и внутреннем мире.':'Истории, которые обретают голос.'}}</p>
 <div class="catalog-toolbar"><p role="status" aria-live="polite">Всего работ: {{works.length}}</p><label>По дате публикации<select v-model="order"><option value="newest">Сначала новые</option><option value="oldest">Сначала старые</option></select></label></div>
 <div v-if="works.length" class="catalog-list">
@@ -27,7 +27,7 @@ onUnmounted(()=>{stopDemo();ctx?.close();document.body.style.overflow=''});
 </div><p v-else class="catalog-empty">Здесь скоро появятся {{isPoems?'стихи':'песни'}} автора.</p>
 <div class="catalog-more"><span>Показано {{visibleWorks.length}} из {{works.length}}</span><button v-if="limit<works.length" class="view-all" @click="limit+=12">Показать ещё <span>↓</span></button></div>
 <p v-if="works.some(w=>w.demo)" class="footnote">Работы с пометкой «демо» и их даты — примеры для макета. Звуковые демо синтезированы без вокала.</p>
-<footer class="catalog-footer"><span>Александр Водопьянов<br><small>Автор песен и стихов</small></span><a :href="isPoems?'/songs.html':'/poems.html'">{{isPoems?'Перейти к песням':'Перейти к стихам'}} ↗</a></footer><a class="site-credit" href="https://tracknode.ru" aria-label="Сайт разработан TrackNode — перейти на tracknode.ru">by <span>TrackNode</span></a>
+<footer class="catalog-footer"><span>{{author.name}}<br><small>{{author.role}}</small></span><a :href="isPoems?'/songs.html':'/poems.html'">{{isPoems?'Перейти к песням':'Перейти к стихам'}} ↗</a></footer><a class="site-credit" href="https://tracknode.ru" aria-label="Сайт разработан TrackNode — перейти на tracknode.ru">by <span>TrackNode</span></a>
 </main>
 <dialog ref="dialog" class="poem-dialog" aria-label="Чтение стихотворения" @click="selected=null" @cancel.prevent="selected=null" @close="selected=null"><article v-if="selected" @click.stop><button class="close" @click="selected=null">Закрыть ×</button><div class="scene-caption">{{selected.theme}} / {{formatDate(selected.publishedAt)}}</div><h2>{{selected.title}}</h2><p v-for="(line,i) in selected.lines" :key="i">{{line||'\u00a0'}}</p><small v-if="selected.demo">Демонстрационный текст и дата</small><button v-if="works.length>1" class="next-poem" @click="nextPoem">Следующее стихотворение →</button></article></dialog>
 </div>
