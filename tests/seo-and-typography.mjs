@@ -16,7 +16,9 @@ for (const [file, canonical] of pages) {
   const html = read(file)
   assert.ok(html.includes('<html lang="ru">'), file + ' missing language')
   assert.ok(html.includes('rel="canonical" href="' + canonical + '"'), file + ' wrong canonical')
-  assert.ok(html.includes('rel="icon" type="image/x-icon" href="/favicon.ico"'))
+  assert.ok(html.includes('rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=20261106-2"'))
+    assert.ok(html.includes('rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=20261106-2"'))
+    assert.ok(html.includes('rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png?v=20261106-2"'))
   assert.ok(html.includes('property="og:url" content="' + canonical + '"'))
   for (const field of ['name="description"', 'property="og:title"', 'property="og:description"',
     'property="og:image"', 'name="twitter:card"', 'name="robots"', 'application/ld+json'])
@@ -34,6 +36,12 @@ const favicon = readFileSync(resolve(root,'public/favicon.ico'))
 assert.equal(favicon.readUInt16LE(0),0)
 assert.equal(favicon.readUInt16LE(2),1)
 assert.ok(favicon.readUInt16LE(4)>=2)
+for(const size of [16,32]){
+  const raw=readFileSync(resolve(root,'public/favicon-'+size+'.png'))
+  assert.equal(raw.subarray(0,8).toString('hex'),'89504e470d0a1a0a')
+  assert.equal(raw.readUInt32BE(16),size)
+  assert.equal(raw.readUInt32BE(20),size)
+}
 const sitemap = read('public/sitemap.xml')
 const robots = read('public/robots.txt')
 for(const [,url] of pages) assert.ok(sitemap.includes('<loc>'+url+'</loc>'))
