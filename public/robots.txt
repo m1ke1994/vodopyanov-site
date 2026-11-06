@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://stariy-site.ru/sitemap.xml
