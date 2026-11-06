@@ -23,3 +23,47 @@ html,body{width:100%;max-width:100%;overflow-x:clip}#app,.experience,main{width:
 /* Optional TrackNode analytics consent: isolated from the cinematic layout. */
 .tn-analytics-consent{position:fixed;z-index:250;bottom:clamp(12px,3vh,28px);left:clamp(12px,3vw,36px);right:clamp(12px,3vw,36px);max-width:550px;padding:18px 20px;border:1px solid #b39a6c77;border-radius:14px;background:#151510f2;box-shadow:0 20px 48px #0009;color:#e8e3d7;font:12px/1.65 Manrope,Arial,sans-serif;backdrop-filter:blur(15px)}
 .tn-analytics-consent p{margin:0}.tn-analytics-consent__actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}.tn-analytics-consent button{padding:9px 13px;border:1px solid #b39a6c7a;border-radius:7px;color:#e8e3d7;background:#252318;font:600 12px Manrope,Arial,sans-serif}.tn-analytics-consent button:last-child{background:#b39a6c;color:#10100e}.tn-analytics-consent button:focus-visible{outline:2px solid #e8e3d7;outline-offset:2px}
+
+
+/* Legibility pass: the cinematic stage, positions and GSAP effects remain unchanged. */
+:root{--reader-ui:Manrope,Arial,sans-serif;--reader-serif:Literata,Georgia,serif}
+body{font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+.hero-sub p,.author-story>p,.author-note p,.collection-heading p,.word .quiet,.contact-copy{
+  font-size:clamp(16px,1.4vw,19px);line-height:1.8;color:#ddd1c2
+}
+.author-story h3{font-size:clamp(23px,2vw,30px)}
+.poem-card-copy p{font-family:var(--reader-serif);font-size:clamp(16px,1.45vw,19px);line-height:1.85}
+.poem-card-copy small,.song-meta small,.poem-card .number,.song-index,.scene-caption,.edition,
+.footnote,.demo-note,.small-name,.vertical-note,.author-topics span{font-size:clamp(12px,1vw,14px);line-height:1.6}
+.desktop-nav,.header-right button,.contact-channel a,.contact-channel small,
+.contact footer{font-size:clamp(13px,1vw,15px);line-height:1.6}
+.contact-channel small{color:#dbcab2}
+.poem-dialog article>p{font-family:var(--reader-serif);font-size:clamp(18px,1.9vw,23px);line-height:1.85}
+.poem-dialog article>small,.poem-dialog .close,.poem-dialog .next-poem{font-size:14px}
+.catalog-header nav,.catalog-back,.catalog-toolbar p,.catalog-toolbar label,.catalog-toolbar select,
+.catalog-meta,.catalog-demo,.catalog-action,.catalog-more>span,
+.catalog-footer,.catalog-footer small,.catalog-main>.footnote,.catalog-main>.site-credit{
+  font-size:clamp(14px,1.05vw,16px);line-height:1.7
+}
+.catalog-intro{font-family:var(--reader-ui);font-size:clamp(16px,1.45vw,19px);line-height:1.85;max-width:650px;color:#e0d2bd}
+.catalog-work h2{font-size:clamp(36px,4vw,56px)}
+.catalog-excerpt{font-family:var(--reader-serif);font-size:clamp(18px,1.65vw,22px);line-height:1.85;color:#e4d4c0;max-width:70ch}
+.catalog-meta,.catalog-demo{color:#c7b294}
+.catalog-action,.view-all{font-size:clamp(14px,1.1vw,16px)}
+.catalog-work{padding-top:36px;padding-bottom:36px}
+.catalog-header a,.catalog-back,.catalog-action,.view-all{min-height:44px}
+.catalog-header nav a{display:inline-flex;align-items:center}
+.tn-analytics-consent{font-size:14px;line-height:1.7}
+.tn-analytics-consent button{font-size:14px;min-height:44px}
+@media(max-width:700px){
+ .catalog-header nav{font-size:14px;gap:12px}
+ .catalog-main{padding-top:125px}
+ .catalog-toolbar label{font-size:14px}
+ .catalog-toolbar select{font-size:14px;min-height:44px}
+ .catalog-meta,.catalog-demo,.catalog-more>span{font-size:13px}
+ .catalog-excerpt{font-size:18px}
+ .word .quiet{font-size:16px}
+ .catalog-footer,.catalog-footer small{font-size:13px}
+ .view-all{font-size:14px}
+}
+@media(prefers-reduced-motion:reduce){.view-all,.catalog-action{transition:none}}

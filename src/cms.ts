@@ -1,5 +1,7 @@
 import { applyCmsBundle } from './data/content'
 import { cmsSections, TRACKNODE_BASE } from './utils/tracknode-cms.mjs'
+import { homeSeo,catalogPoems,catalogSongs } from './data/content'
+import { applyEditableSeo } from './utils/seo.mjs'
 
 export async function loadEditableContent() {
   try {
@@ -19,7 +21,13 @@ export async function loadEditableContent() {
     if (!response.ok) return false
     const bundle = await response.json()
     if (!cmsSections(bundle)) return false
-    return applyCmsBundle(bundle)
+    const applied = applyCmsBundle(bundle)
+    if (applied) {
+      const pathname = window.location.pathname
+      const config = pathname === '/poems.html' ? catalogPoems : pathname === '/songs.html' ? catalogSongs : homeSeo
+      applyEditableSeo(config)
+    }
+    return applied
   } catch {
     // The previously bundled content stays available if the API is offline.
     return false

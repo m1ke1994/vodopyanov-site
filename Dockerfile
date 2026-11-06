@@ -3,7 +3,7 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm ci
 COPY . .
-RUN npm run test:tracknode && npm run test:cms && npm run build
+RUN npm run test:tracknode && npm run test:cms && npm run test:seo && npm run build
 
 FROM nginx:1.27-alpine
 COPY nginx.conf /etc/nginx/conf.d/default.conf

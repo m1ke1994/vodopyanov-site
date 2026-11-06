@@ -28,4 +28,12 @@ assert.deepEqual(cmsContacts([]),[])
 const target = {name:'старое',role:'автор'}
 applyKnownFields(target,{name:'новое',role:123},['name','role'])
 assert.deepEqual(target,{name:'новое',role:'автор'})
+
+const extraBundle={site,sections:[
+  section('catalog-poems',{intro:'Новое описание стихов',seo_title:'Новый заголовок стихов'}),
+  section('catalog-songs',{heading_accent:'новые песни.'}),
+  section('home-seo',{seo_description:'Описание главной'}),
+]}
+assert.deepEqual(Object.keys(cmsSections(extraBundle)), ['catalog-poems','catalog-songs','home-seo'])
+
 console.log('Vodopyanov live editable CMS data tests passed')

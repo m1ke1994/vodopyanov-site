@@ -42,6 +42,32 @@ export const contactCopy = reactive({
   description_first:'Для творческого сотрудничества,',
   description_second:'новых песен и простых человеческих слов.',
 })
+
+export const catalogPoems = reactive({
+ eyebrow:'МЕЖДУ СТРОК / ПОЭЗИЯ', heading_start:'Все',heading_accent:'стихи.',
+ intro:'Строки о близости, расстояниях и внутреннем мире.',
+ back_label:'← Вернуться к истории',count_label:'Всего работ',
+ sort_label:'По дате публикации',sort_newest:'Сначала новые',sort_oldest:'Сначала старые',
+ more_label:'Показать ещё',empty_message:'Здесь скоро появятся стихи автора.',
+ footer_link:'Перейти к песням',
+ seo_title:'Стихи Александра Водопьянова — читать онлайн',
+ seo_description:'Стихотворения Александра Водопьянова: тексты, темы и даты публикаций. Читайте произведения автора в каталоге.',
+})
+export const catalogSongs = reactive({
+ eyebrow:'МЕЖДУ СТРОК / МУЗЫКА', heading_start:'Все',heading_accent:'песни.',
+ intro:'Истории, которые обретают голос.',
+ back_label:'← Вернуться к истории',count_label:'Всего работ',
+ sort_label:'По дате публикации',sort_newest:'Сначала новые',sort_oldest:'Сначала старые',
+ more_label:'Показать ещё',empty_message:'Здесь скоро появятся песни автора.',
+ footer_link:'Перейти к стихам',
+ seo_title:'Песни Александра Водопьянова — каталог',
+ seo_description:'Песни Александра Водопьянова: темы, даты публикаций и доступные звуковые эскизы.',
+})
+export const homeSeo = reactive({
+ seo_title:'Между строк — Александр Водопьянов | Стихи и песни',
+ seo_description:'Александр Водопьянов — автор песен и стихов. Кинематографическая история о творчестве, музыке и поэзии.',
+})
+
 export const cmsRevision = ref(0)
 export function applyCmsBundle(bundle: unknown): boolean {
   const sections = cmsSections(bundle)
@@ -55,6 +81,9 @@ export function applyCmsBundle(bundle: unknown): boolean {
   applyKnownFields(music, sections.songs, ['title','accent','description_first','description_second'])
   applyKnownFields(outro, sections.outro, ['title','accent'])
   applyKnownFields(contactCopy, sections.contacts, ['title','accent','description_first','description_second'])
+  applyKnownFields(catalogPoems, sections['catalog-poems'], ['eyebrow','heading_start','heading_accent','intro','back_label','count_label','sort_label','sort_newest','sort_oldest','more_label','empty_message','footer_link','seo_title','seo_description'])
+  applyKnownFields(catalogSongs, sections['catalog-songs'], ['eyebrow','heading_start','heading_accent','intro','back_label','count_label','sort_label','sort_newest','sort_oldest','more_label','empty_message','footer_link','seo_title','seo_description'])
+  applyKnownFields(homeSeo, sections['home-seo'], ['seo_title','seo_description'])
   const newPoems = cmsPoems(sections.poems?.items)
   if (newPoems) poems.splice(0, poems.length, ...newPoems)
   const newSongs = cmsSongs(sections.songs?.items)

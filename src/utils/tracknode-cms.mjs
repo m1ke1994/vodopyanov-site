@@ -1,6 +1,6 @@
 // Validate the expected site and normalize editable CMS data before applying it.
 export const TRACKNODE_BASE = 'https://tracknode.ru'
-const KEYS = ['hero','word','about','poems','songs','outro','contacts']
+const KEYS = ['hero','word','about','poems','songs','outro','contacts','catalog-poems','catalog-songs','home-seo']
 export function cmsSections(bundle) {
   const site = bundle?.site
   const domain = String(site?.domain || '').trim().toLowerCase().replace(/^www\./, '')

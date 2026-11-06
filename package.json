@@ -7,7 +7,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "test:tracknode": "node tests/tracknode-analytics.mjs",
-    "test:cms": "node tests/cms-content.mjs"
+    "test:cms": "node tests/cms-content.mjs",
+    "test:seo": "node tests/seo-and-typography.mjs"
   },
   "dependencies": {
     "@vitejs/plugin-vue": "^6.0.0",
