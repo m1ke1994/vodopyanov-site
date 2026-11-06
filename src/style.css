@@ -19,3 +19,7 @@ html,body{width:100%;max-width:100%;overflow-x:clip}#app,.experience,main{width:
 
 /* Small studio credit on all three pages. */
 .site-credit{font:9px/1.7 Manrope,Arial,sans-serif;letter-spacing:.7px;color:#9d8972;white-space:nowrap}.site-credit span{color:#bca181;transition:color .2s}.site-credit:hover,.site-credit:hover span{color:#ebc996}.contact>.site-credit{position:absolute;right:5vw;bottom:12px}.catalog-main>.site-credit{display:block;text-align:right;margin-top:20px}@media(max-width:700px){.contact>.site-credit{right:7vw;bottom:12px}}
+
+/* Optional TrackNode analytics consent: isolated from the cinematic layout. */
+.tn-analytics-consent{position:fixed;z-index:250;bottom:clamp(12px,3vh,28px);left:clamp(12px,3vw,36px);right:clamp(12px,3vw,36px);max-width:550px;padding:18px 20px;border:1px solid #b39a6c77;border-radius:14px;background:#151510f2;box-shadow:0 20px 48px #0009;color:#e8e3d7;font:12px/1.65 Manrope,Arial,sans-serif;backdrop-filter:blur(15px)}
+.tn-analytics-consent p{margin:0}.tn-analytics-consent__actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}.tn-analytics-consent button{padding:9px 13px;border:1px solid #b39a6c7a;border-radius:7px;color:#e8e3d7;background:#252318;font:600 12px Manrope,Arial,sans-serif}.tn-analytics-consent button:last-child{background:#b39a6c;color:#10100e}.tn-analytics-consent button:focus-visible{outline:2px solid #e8e3d7;outline-offset:2px}
